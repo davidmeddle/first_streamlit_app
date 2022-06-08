@@ -30,17 +30,21 @@ streamlit.dataframe(fruits_to_show)
 #new section to display fruitvice api response 
 streamlit.header('Fruitvice Fruit Advice!')
 
+fruit_choice = streamlit.text_input ('What fruit would you like information about?', 'Kiwi')
+streamlit.write ('Thye user entered', fruit_choice)
+	
+
+
 import requests
 
-fruitvice_response = requests.get ("https://fruityvice.com/api/fruit/" + "kiwi")
-#streamlit.text(fruitvice_response.json()) #just writes the data to the screen
+fruitvice_response = requests.get ("https://fruityvice.com/api/fruit/" + fruit_choice)
+#streamlit.text(fruitvice_response.jason()) #just writes the data to the screen
 
 
 #take the json version of the response and nortmalize it
 
-fruitvice_normalized = pandas.json_normalize(fruitvice_response.json()) 
+fruitvice_normalized = pandas.json_normalize(fruitvice_response.jason()) 
 #output is the screen as a table
 streamlit.dataframe(fruitvice_normalized)
-
 
 
