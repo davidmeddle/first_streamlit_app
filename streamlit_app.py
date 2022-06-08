@@ -28,6 +28,6 @@ streamlit.dataframe(fruits_to_show)
 
 
 #display the table on the page
-streamlit.dataframe(my_fruit_list)
+#streamlit.dataframe(my_fruit_list)
 
 
