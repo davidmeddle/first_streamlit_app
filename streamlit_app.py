@@ -30,7 +30,7 @@ streamlit.dataframe(fruits_to_show)
 #new section to display fruitvice api response 
 import requests
 
-fruitvice_response = request.get ("https://fruitvice.com/api/fruit/watermelon")
+fruitvice_response = requests.get ("https://fruitvice.com/api/fruit/watermelon")
 streamlit.text(fruitvice_response)
 
 
