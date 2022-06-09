@@ -20,6 +20,11 @@ fruits_selected = streamlit.multiselect("Pick some fruits:",list (my_fruit_list.
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
+
+
+
+
+
 #create to repeatable code block (called a function)
 def get_fruitvice_data(this_fruit_choice):
 	fruitvice_response = requests.get ("https://fruityvice.com/api/fruit/" + fruit_choice)	
@@ -35,9 +40,12 @@ try:
 	else:
 		back_from_function = get_fruitvice_data (fruit_choice)
 		streamlit.dataframe(back_from_function)
-
 except URLerror as e:
 	streamlit.error()
+
+	
+#dont run anything past here where we troubleshoot
+streamlit.stop()
 
 #import snowflake.connector
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
