@@ -24,7 +24,7 @@ fruitvice_normalized = pandas.json_normalize(fruitvice_response.json())
 
 streamlit.dataframe(fruitvice_normalized)
 
-#import snowflake.connector
+import snowflake.connector
 
 #my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 #my_cur = my_cnx.cursor()
