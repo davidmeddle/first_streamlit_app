@@ -20,6 +20,16 @@ fruits_selected = streamlit.multiselect("Pick some fruits:",list (my_fruit_list.
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
+
+
+
+
+#create to repeatable code block (called a function)
+def get_fruitvice_data (this_fruit_choice):
+	fruitvice_response = requests.get ("https://fruityvice.com/api/fruit/" + fruit_choice)	
+	fruitvice_normalized = pandas.json_normalize(fruitvice_response.jason()) 	
+	return fruitvice_normalized
+
 #new section to display fruitvice api response 
 streamlit.header('Fruitvice Fruit Advice!')
 try:
@@ -27,18 +37,11 @@ try:
 	if not fruit_choice:
 		streamlit.error("Please select a fruit toi get inforamtion.")
 	else:
-		fruitvice_response = requests.get ("https://fruityvice.com/api/fruit/" + fruit_choice)	
-		fruitvice_normalized = pandas.json_normalize(fruitvice_response.jason()) 	
-		streamlit.dataframe(fruitvice_normalized)
-except URLerror as e:
-	streamlit.error()
+		back_from_function = get_fruitvice_data (fruit_choice)
+		streamlit.dataframe(back_from_function)
 
-#streamlit.text(fruitvice_response.jason()) #just writes the data to the screen
-#take the json version of the response and nortmalize it
-#output is the screen as a table
-#requirements.txt
-#dont run anything past here where we troubleshoot
-streamlit.stop()
+except URLerror as e:
+streamlit.error()
 
 
 
